@@ -111,6 +111,7 @@ This project is licensed under the **MIT License**. You are free to modify and u
 ## Contact
 For questions or contributions, feel free to reach out!
 
-📧 Email: [Reach out](https://www.linkedin.com/in/joaorussofigueiredo/)
-🔗 GitHub: [yourusername](https://github.com/j0hnrusso)
+📧 [Reach out](https://www.linkedin.com/in/joaorussofigueiredo/)
+
+🔗 [JohnRusso](https://github.com/j0hnrusso)
 

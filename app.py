@@ -20,7 +20,7 @@ from sklearn.metrics import average_precision_score
 import os
 
 # Define paths relative to the script location
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "rf_best.pkl")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "rf_best_compressed.pkl")
 SCALER_PATH = os.path.join(os.path.dirname(__file__), "scaler.pkl")
 APP_VERSION = "v0.2"
 COLOR_THEME = {

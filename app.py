@@ -21,7 +21,7 @@ import os
 import joblib  
 
 # Define paths relative to the script location
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "rf_best_compressed.pkl")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "rf_best.pkl")
 SCALER_PATH = os.path.join(os.path.dirname(__file__), "scaler.pkl")
 APP_VERSION = "v0.2"
 COLOR_THEME = {

@@ -18,6 +18,7 @@ from sklearn.metrics import auc, roc_auc_score, roc_curve, recall_score, log_los
 from sklearn.metrics import f1_score, accuracy_score, roc_auc_score, make_scorer
 from sklearn.metrics import average_precision_score
 import os
+import joblib  
 
 # Define paths relative to the script location
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "rf_best_compressed.pkl")
@@ -46,8 +47,7 @@ if "true_labels" not in st.session_state:
 # --- Model Loading ---
 @st.cache_resource
 def load_model():
-    with open(MODEL_PATH, "rb") as model_file:
-        return pickle.load(model_file)
+    return joblib.load(MODEL_PATH)
 @st.cache_resource
 def load_scaler():
     with open(SCALER_PATH, "rb") as scaler_file:

@@ -41,22 +41,6 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Deployment on GitHub
-If you need to deploy the app on **GitHub** and you have large model files (`rf_best.pkl` and `scaler.pkl`), follow these steps:
-
-### **Using Git LFS (Recommended for Large Files)**
-```bash
-git lfs install
-git lfs track "*.pkl"
-git add .gitattributes rf_best.pkl scaler.pkl
-git commit -m "Track large model files using Git LFS"
-git push origin main
-```
-
-Alternatively, store large files on **Google Drive** or **AWS S3** and modify `app.py` to download them dynamically.
-
----
-
 ## **Generating Random Employee Data**
 This project includes a **random employee data generator** that creates a synthetic dataset of **1,000 employees** with relevant features for attrition prediction.
 

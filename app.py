@@ -47,7 +47,8 @@ if "true_labels" not in st.session_state:
 # --- Model Loading ---
 @st.cache_resource
 def load_model():
-    return joblib.load(MODEL_PATH)
+    with open(MODEL_PATH, "rb") as model_file:
+        return pickle.load(model_file)
 @st.cache_resource
 def load_scaler():
     with open(SCALER_PATH, "rb") as scaler_file:
@@ -185,42 +186,28 @@ def display_upload_data():
     with st.expander("📋 Data Requirements", expanded=True):
         required_features = get_required_features_from_model(model)
         feature_data_types = {
-            'Age': 'int64',
-            'DailyRate': 'int64',
-            'DistanceFromHome': 'int64',
-            'EmployeeNumber': 'int64',
-            'EnvironmentSatisfaction': 'int64',
-            'JobInvolvement': 'int64',
-            'JobLevel': 'int64',
-            'JobSatisfaction': 'int64',
-            'MonthlyIncome': 'int64',
-            'OverTime': 'int64',
-            'StockOptionLevel': 'int64',
-            'TotalWorkingYears': 'int64',
-            'TrainingTimesLastYear': 'int64',
-            'WorkLifeBalance': 'int64',
-            'YearsAtCompany': 'int64',
-            'YearsInCurrentRole': 'int64',
-            'YearsWithCurrManager': 'int64',
-            'BusinessTravel_Travel_Frequently':     'bool',      
-            'BusinessTravel_Travel_Rarely':         'bool',       
-            'MaritalStatus_Married':                'bool',
-            'MaritalStatus_Single':                 'bool',         
-            'Department_Research & Development':    'bool',
-            'Department_Sales':                     'bool',
-            'EducationField_Life Sciences':         'bool',
-            'EducationField_Marketing':             'bool',
-            'EducationField_Medical':               'bool',
-            'EducationField_Other':                 'bool',
-            'EducationField_Technical Degree':      'bool',
-            'JobRole_Human Resources':              'bool',
-            'JobRole_Laboratory Technician':        'bool',
-            'JobRole_Manager':                      'bool',
-            'JobRole_Manufacturing Director':       'bool',
-            'JobRole_Research Director':            'bool',
-            'JobRole_Research Scientist':           'bool',
-            'JobRole_Sales Executive':              'bool',
-            'JobRole_Sales Representative':         'bool',
+                            'Age': 'int64',
+                            'DailyRate': 'int64',
+                            'DistanceFromHome': 'int64',
+                            'Education': 'int64',
+                            'EmployeeNumber': 'int64',
+                            'EnvironmentSatisfaction': 'int64',
+                            'JobInvolvement': 'int64',
+                            'JobLevel': 'int64',
+                            'JobSatisfaction': 'int64',
+                            'MonthlyIncome': 'int64',
+                            'OverTime': 'bool',
+                            'StockOptionLevel': 'int64',
+                            'TotalWorkingYears': 'int64',
+                            'TrainingTimesLastYear': 'int64',
+                            'WorkLifeBalance': 'int64',
+                            'YearsAtCompany': 'int64',
+                            'YearsInCurrentRole': 'int64',
+                            'YearsWithCurrManager': 'int64',
+                            'BusinessTravel_Travel_Frequently': 'bool',
+                            'BusinessTravel_Travel_Rarely': 'bool',
+                            'MaritalStatus_Married': 'bool',
+                            'MaritalStatus_Single': 'bool'
         }
 
         st.table(pd.DataFrame({
@@ -339,20 +326,13 @@ def get_required_features_from_model(model):
         return list(model.feature_names_in_)
     else:
         # Fallback to a predefined list if the model doesn't expose feature names
-        return ['Age', 'DailyRate', 'DistanceFromHome', 'EmployeeNumber',
+        return ['Age', 'DailyRate', 'DistanceFromHome', 'Education', 'EmployeeNumber',
        'EnvironmentSatisfaction', 'JobInvolvement', 'JobLevel',
        'JobSatisfaction', 'MonthlyIncome', 'OverTime', 'StockOptionLevel',
        'TotalWorkingYears', 'TrainingTimesLastYear', 'WorkLifeBalance',
        'YearsAtCompany', 'YearsInCurrentRole', 'YearsWithCurrManager',
        'BusinessTravel_Travel_Frequently', 'BusinessTravel_Travel_Rarely',
-       'MaritalStatus_Married', 'MaritalStatus_Single',
-       'EducationField_Life Sciences', 'EducationField_Marketing',
-       'EducationField_Medical', 'EducationField_Other',
-       'EducationField_Technical Degree', 'JobRole_Human Resources',
-       'JobRole_Laboratory Technician', 'JobRole_Manager',
-       'JobRole_Manufacturing Director', 'JobRole_Research Director',
-       'JobRole_Research Scientist', 'JobRole_Sales Executive',
-       'JobRole_Sales Representative'
+       'MaritalStatus_Married', 'MaritalStatus_Single'
         ]
 
 # Display model evaluation section
@@ -438,7 +418,7 @@ def display_recommendations():
                     with col2:
                         st.markdown(f"**Self reported Satisfaction:** {row['JobSatisfaction']}/4")
                         st.markdown(f"**Income:** ${row['MonthlyIncome']:,.0f}")
-                        st.markdown(f"**Working Overtime?:** {row.get('OverTime', 'N/A')}")
+                        st.markdown(f"**Working Overtime?** {row.get('OverTime', 'N/A')}")
                     st.markdown("#### Action Items")
                     actions = []
                     if row['JobSatisfaction'] < 3:

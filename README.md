@@ -123,7 +123,7 @@ This project is licensed under the **MIT License**. You are free to modify and u
 ## Contact
 For questions or contributions, feel free to reach out!
 
-📧 [Reach out](https://www.linkedin.com/in/joaorussofigueiredo/)
+📧 [Reach out on LinkedIn](https://www.linkedin.com/in/joaorussofigueiredo/)
 
-🔗 [JohnRusso](https://github.com/j0hnrusso)
+🔗 [JohnRusso Repo](https://github.com/j0hnrusso)
 

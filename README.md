@@ -16,30 +16,49 @@ By leveraging machine learning, this app helps **identify employees at risk** an
 - **Actionable Recommendations**: Based on key factors like job satisfaction, monthly income, and work-life balance
 
 ## Getting Started Guide
-1. **Upload Data**: Provide your employee dataset in CSV format
-2. **Model Evaluation**: Review model performance metrics
-3. **Feature Analysis**: Understand key attrition drivers
-4. **Recommendations**: Get personalized action plans
 
-## Installation
 To run this project locally, follow these steps:
 
-### **1️⃣ Clone the Repository**
+### 1️⃣ Clone the Repository
+
+First, clone the repository and navigate into the project directory:
+
 ```bash
 git clone https://github.com/yourusername/employee-attrition-app.git
 cd employee-attrition-app
 ```
 
-### **2️⃣ Install Dependencies**
-Ensure you have Python installed, then run:
+### 2️⃣ Install Dependencies
+
+Ensure you have Python installed, then install the required dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### **3️⃣ Run the Application**
+### 3️⃣ Run the Application
+
+Start the Streamlit app by running:
+
 ```bash
 streamlit run app.py
 ```
+
+This will launch the app in your default web browser.
+
+## Requirements
+
+- Python 3.8+
+- Streamlit
+- Pandas
+- Scikit-learn
+- Matplotlib
+- Seaborn
+
+## Notes
+
+- Ensure your dataset contains the required features before uploading.
+- The model and scaler files (`rf_best.pkl` and `scaler.pkl`) should be placed in the project directory.
 
 ## **Generating Random Employee Data**
 This project includes a **random employee data generator** that creates a synthetic dataset of **1,000 employees** with relevant features for attrition prediction.
@@ -120,8 +139,13 @@ This will create a **synthetic dataset** to test the app without needing real em
 ## License
 This project is licensed under the **MIT License**. You are free to modify and use it for commercial and non-commercial purposes.
 
-## Contact
-For questions or contributions, feel free to reach out!
+## Contributing
+
+Feel free to submit pull requests or report issues to improve this project.
+
+---
+
+For any issues or questions, reach out via GitHub or email.
 
 📧 [Reach out on LinkedIn](https://www.linkedin.com/in/joaorussofigueiredo/)
 
